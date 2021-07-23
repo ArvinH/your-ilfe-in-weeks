@@ -1,0 +1,54 @@
+:root {
+  --bg-color: #fff;
+  --font-color: #000;
+  --lived-weeks-font-color: #C93C37;
+  --rest-weeks-font-color: #57AB5A;
+  --btn-shadow-color: #545454;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #000;
+    --font-color: #fff;
+    --lived-weeks-font-color: #C93C37;
+    --rest-weeks-font-color: #57AB5A;
+    --btn-shadow-color: #fff;
+  }
+}
+
+html {
+  background-color: var(--bg-color);
+}
+
+body {
+  text-align: center;
+  color: var(--font-color);
+}
+
+#control-panel {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+#submitBtn {
+  border: 0;
+  padding: 0.5rem;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+#submitbtn:hover {
+  box-shadow: 4px 8px 13px -6px var(--btn-shadow-color);
+}
+
+#info {
+  padding: 10px;
+}
+
+#info strong:first-child {
+  color: var(--lived-weeks-font-color);
+}
+
+#info strong:nth-child(2) {
+  color: var(--rest-weeks-font-color);
+}
