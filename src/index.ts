@@ -113,8 +113,10 @@ const inputRef = <HTMLInputElement>(
 );
 
 const handler = () => {
-  const svg = document.querySelector("svg");
-  svg?.remove();
+  const weekSvg = document.querySelector("#weeks svg");
+  const legentSvg = document.querySelector("#legend svg");
+  weekSvg?.remove();
+  legentSvg?.remove();
   const birthDay = inputRef?.value;
   birthDay && render(birthDay, document.getElementById("weeks"));
 };
