@@ -8,3 +8,5 @@ Inspired by https://towardsdatascience.com/how-to-visualize-the-rest-of-your-lif
 
 https://your-ilfe-in-weeks.vercel.app/
 
+
+![your-life-in-weeks](./your-life-in-weeks.png)
