@@ -4,6 +4,7 @@
   --lived-weeks-font-color: #C93C37;
   --rest-weeks-font-color: #57AB5A;
   --btn-shadow-color: #545454;
+  --btn-background-color: #9C9C9C;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -13,6 +14,7 @@
     --lived-weeks-font-color: #C93C37;
     --rest-weeks-font-color: #57AB5A;
     --btn-shadow-color: #fff;
+    --btn-background-color: #fff;
   }
 }
 
@@ -34,6 +36,7 @@ body {
   border: 0;
   padding: 0.2rem;
   border-radius: 5px;
+  background-color: var(--btn-background-color);
   cursor: pointer;
 }
 

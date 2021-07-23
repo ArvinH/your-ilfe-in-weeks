@@ -25,43 +25,43 @@ const caculate = (birthDay: string) => {
   const dayOfBirth = new Date(birthDay);
   const dayOfDeath = new Date(+year + lifeExp, +month, +day);
   const livedLife = today.getTime() - dayOfBirth.getTime();
-  const restOfLife = dayOfDeath.getTime() - today.getTime();
+  const remainingLife = dayOfDeath.getTime() - today.getTime();
   const livedWeeks = Math.ceil(livedLife / (7 * 24 * 60 * 60 * 1000));
-  const restOfWeeks = Math.ceil(restOfLife / (7 * 24 * 60 * 60 * 1000));
-  const totalWeeks = livedWeeks + restOfWeeks;
-  return { totalWeeks, livedWeeks, restOfWeeks };
+  const remainingWeeks = Math.ceil(remainingLife / (7 * 24 * 60 * 60 * 1000));
+  const totalWeeks = livedWeeks + remainingWeeks;
+  return { totalWeeks, livedWeeks, remainingWeeks };
 };
 
 const generateLegent = () => {
   const legend = document.querySelector("#legend");
   if (legend) {
-    // Rest of weeks
+    // Remaining weeks
     const svgContainter = createSVGNode("svg", { width: 320, height: 15 });
-    const gRest = createSVGNode("g", { width: 50, height: 15 }); 
-    const rest = createSVGNode("rect", { x: 0, y: 0, width: 15, height: 15, stroke: '#27282d', fill: '#27282d'});
-    const restText = createSVGNode("text", { x: 20, y: 12.5, width: 15, height: 15, stroke: '#fff', fill: '#fff', fontSize: '0.8rem' });
-    restText.innerHTML = 'rest of weeks';
-    gRest.appendChild(rest);
-    gRest.appendChild(restText);
+    const gRemaining = createSVGNode("g", { width: 50, height: 15 }); 
+    const remaining = createSVGNode("rect", { x: 0, y: 0, width: 15, height: 15, stroke: '#27282d', fill: '#27282d'});
+    const remainingText = createSVGNode("text", { x: 20, y: 12.5, width: 15, height: 15, stroke: '#fff', fill: '#fff', fontSize: '0.8rem' });
+    remainingText.innerHTML = 'Remaining weeks';
+    gRemaining.appendChild(remaining);
+    gRemaining.appendChild(remainingText);
 
     // Lived weeks
     const gLived = createSVGNode("g", { width: 50, height: 15 }); 
-    const lived = createSVGNode("rect", { x: 110, y: 0, width: 15, height: 15, stroke: '#27282d', fill: '#9c9c9c'});
-    const livedText = createSVGNode("text", { x: 130, y: 12.5, width: 15, height: 15, stroke: '#fff', fill: '#fff', fontSize: '0.8rem' });
+    const lived = createSVGNode("rect", { x: 130, y: 0, width: 15, height: 15, stroke: '#27282d', fill: '#9c9c9c'});
+    const livedText = createSVGNode("text", { x: 150, y: 12.5, width: 15, height: 15, stroke: '#fff', fill: '#fff', fontSize: '0.8rem' });
     livedText.innerHTML = 'Lived weeks';
     gLived.appendChild(lived);
     gLived.appendChild(livedText);
 
     // Current week
     const gCurrent = createSVGNode("g", { width: 50, height: 15 }); 
-    const current = createSVGNode("rect", { x: 210, y: 0, width: 15, height: 15, stroke: '#3FC463', fill: '#3FC463'});
-    const currentText = createSVGNode("text", { x: 230, y: 12.5, width: 15, height: 15, stroke: '#fff', fill: '#fff', fontSize: '0.8rem' });
-    currentText.innerHTML = 'Current weeks';
+    const current = createSVGNode("rect", { x: 230, y: 0, width: 15, height: 15, stroke: '#3FC463', fill: '#3FC463'});
+    const currentText = createSVGNode("text", { x: 250, y: 12.5, width: 15, height: 15, stroke: '#fff', fill: '#fff', fontSize: '0.8rem' });
+    currentText.innerHTML = 'This week';
     gCurrent.appendChild(current);
     gCurrent.appendChild(currentText);
 
     const fragment = document.createDocumentFragment();
-    fragment.appendChild(gRest);
+    fragment.appendChild(gRemaining);
     fragment.appendChild(gLived);
     fragment.appendChild(gCurrent);
     svgContainter.appendChild(fragment);
@@ -72,11 +72,11 @@ const generateLegent = () => {
 const render = (birthDay: string, root: HTMLElement | null) => {
   const blockSize = 5;
   const rowSize = 30;
-  const { totalWeeks, livedWeeks, restOfWeeks } = caculate(birthDay);
+  const { totalWeeks, livedWeeks, remainingWeeks } = caculate(birthDay);
   const infoArea = document.querySelector("#info");
   if (infoArea) {
     infoArea.innerHTML = `
-      You have lived <strong>${livedWeeks}</strong> weeks, <strong>${restOfWeeks}</strong> left until you are 85.
+      You have lived <strong>${livedWeeks}</strong> weeks, <strong>${remainingWeeks}</strong> left until you are 85.
     `;
     generateLegent();
   }
