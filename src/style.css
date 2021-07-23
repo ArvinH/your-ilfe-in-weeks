@@ -27,9 +27,12 @@ body {
   color: var(--font-color);
 }
 
-#control-panel {
+#control-panel-input {
+  display: inline;
   font-size: 1rem;
   font-weight: bold;
+  padding-right: 5px;
+  padding-left: 5px;
 }
 
 #submitBtn {
@@ -38,6 +41,7 @@ body {
   border-radius: 5px;
   background-color: var(--btn-background-color);
   cursor: pointer;
+  margin-top: 10px;
 }
 
 #submitbtn:hover {
@@ -58,4 +62,22 @@ body {
 
 #info strong:nth-child(2) {
   color: var(--rest-weeks-font-color);
+}
+
+#week {
+  margin-bottom: 50px;
+}
+
+footer {
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  bottom: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
