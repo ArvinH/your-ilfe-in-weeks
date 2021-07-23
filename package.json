@@ -1,7 +1,8 @@
 {
   "name": "your-life-in-weeks",
+  "author": "arvinh",
   "version": "1.0.0",
-  "description": "",
+  "description": "Visualize your life in weeks",
   "main": "index.html",
   "scripts": {
     "start": "parcel index.html --open",
