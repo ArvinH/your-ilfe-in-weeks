@@ -1,3 +1,15 @@
+const livedWeeksColor = {
+  stroke: '#27282d',
+  fill: '#9c9c9c',
+};
+const currentWeeksColor = {
+  stroke: '#3FC463',
+  fill: '#3FC463',
+};
+const restWeeksColor = {
+  stroke: '#27282d',
+  fill: '#27282d',
+};
 const createSVGNode = (
   nodeType: string,
   attributes?: Record<string, string | number>
@@ -17,9 +29,6 @@ const createSVGNode = (
 
 const caculate = (birthDay: string) => {
   const lifeExp = 85;
-  const livedWeeksColor = '';
-  const currentWeeksColor = '';
-  const restWeeksColor = '';
   const today = new Date();
   const [year, month, day] = birthDay.split("-");
   const dayOfBirth = new Date(birthDay);
@@ -38,7 +47,7 @@ const generateLegent = () => {
     // Remaining weeks
     const svgContainter = createSVGNode("svg", { width: 320, height: 15 });
     const gRemaining = createSVGNode("g", { width: 50, height: 15 }); 
-    const remaining = createSVGNode("rect", { x: 0, y: 0, width: 15, height: 15, stroke: '#27282d', fill: '#27282d'});
+    const remaining = createSVGNode("rect", { x: 0, y: 0, width: 15, height: 15, stroke: restWeeksColor.stroke, fill: restWeeksColor.fill});
     const remainingText = createSVGNode("text", { x: 20, y: 12.5, width: 15, height: 15, stroke: '#fff', fill: '#fff', fontSize: '0.8rem' });
     remainingText.innerHTML = 'Remaining weeks';
     gRemaining.appendChild(remaining);
@@ -46,7 +55,7 @@ const generateLegent = () => {
 
     // Lived weeks
     const gLived = createSVGNode("g", { width: 50, height: 15 }); 
-    const lived = createSVGNode("rect", { x: 130, y: 0, width: 15, height: 15, stroke: '#27282d', fill: '#9c9c9c'});
+    const lived = createSVGNode("rect", { x: 130, y: 0, width: 15, height: 15, stroke: livedWeeksColor.stroke, fill: livedWeeksColor.fill });
     const livedText = createSVGNode("text", { x: 150, y: 12.5, width: 15, height: 15, stroke: '#fff', fill: '#fff', fontSize: '0.8rem' });
     livedText.innerHTML = 'Lived weeks';
     gLived.appendChild(lived);
@@ -54,7 +63,7 @@ const generateLegent = () => {
 
     // Current week
     const gCurrent = createSVGNode("g", { width: 50, height: 15 }); 
-    const current = createSVGNode("rect", { x: 230, y: 0, width: 15, height: 15, stroke: '#3FC463', fill: '#3FC463'});
+    const current = createSVGNode("rect", { x: 230, y: 0, width: 15, height: 15, stroke: currentWeeksColor.stroke, fill: currentWeeksColor.fill});
     const currentText = createSVGNode("text", { x: 250, y: 12.5, width: 15, height: 15, stroke: '#fff', fill: '#fff', fontSize: '0.8rem' });
     currentText.innerHTML = 'This week';
     gCurrent.appendChild(current);
@@ -71,7 +80,7 @@ const generateLegent = () => {
 
 const render = (birthDay: string, root: HTMLElement | null) => {
   const blockSize = 5;
-  const rowSize = 30;
+  const rowSize = 52;
   const { totalWeeks, livedWeeks, remainingWeeks } = caculate(birthDay);
   const infoArea = document.querySelector("#info");
   if (infoArea) {
