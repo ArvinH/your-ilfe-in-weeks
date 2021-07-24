@@ -69,11 +69,9 @@ const generateLegent = () => {
     gCurrent.appendChild(current);
     gCurrent.appendChild(currentText);
 
-    const fragment = document.createDocumentFragment();
-    fragment.appendChild(gRemaining);
-    fragment.appendChild(gLived);
-    fragment.appendChild(gCurrent);
-    svgContainter.appendChild(fragment);
+    svgContainter.appendChild(gRemaining);
+    svgContainter.appendChild(gLived);
+    svgContainter.appendChild(gCurrent);
     legend.appendChild(svgContainter);
   }
 };
@@ -89,7 +87,6 @@ const render = (birthDay: string, root: HTMLElement | null) => {
     `;
     generateLegent();
   }
-  const fragment = document.createDocumentFragment();
   const svgContainter = createSVGNode("svg", {
     width: rowSize * blockSize,
     height: Math.ceil(totalWeeks / rowSize) * blockSize
@@ -109,10 +106,8 @@ const render = (birthDay: string, root: HTMLElement | null) => {
       rectOption.fill = index === livedWeeks ? "#3FC463" : "#9c9c9c";
     }
     const rect = createSVGNode("rect", rectOption);
-    fragment.appendChild(rect);
+    svgContainter.appendChild(rect);
   }
-
-  svgContainter.appendChild(fragment);
 
   root?.appendChild(svgContainter);
 };
