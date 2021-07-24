@@ -10,3 +10,11 @@ https://your-ilfe-in-weeks.vercel.app/
 
 
 ![your-life-in-weeks](./your-life-in-weeks.png)
+
+### Tech stack
+
+- Typescript
+- HTML
+- CSS
+- SVG
+- Parcel
